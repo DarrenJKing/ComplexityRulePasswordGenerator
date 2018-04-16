@@ -22,9 +22,9 @@ namespace ComplexGenPass
                 "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
                 "abcdefghijklmnopqrstuvwxyz",
                 "0123456789",
-                "!@#$%^&*+=~"
+                "!@#$%^&*~=+",
             };
-            var intIndex = new int[ 4 ] { 1, 1, 1, 1 };
+            var intIndex = Enumerable.Repeat( 1, passchars.Length ).ToArray( );
             var password = new char[ length ];
             var randomIndexArray = CreateRandomIndexArray( length );
             Random random = new Random( ( int )DateTime.Now.Ticks );
@@ -36,7 +36,7 @@ namespace ComplexGenPass
             int sectionIndex = 0;
             string passcharsection = string.Empty;
 
-            while( sectionIndex < passchars.Length && max > 1 )
+            while( sectionIndex < passchars.Length && max >= 1 )
             {
                 sectionCharacterCount = random.Next( 1, max );
                 intIndex[ sectionIndex ] = sectionCharacterCount;
